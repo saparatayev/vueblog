@@ -1,5 +1,6 @@
 <template>
-    <nav>
+    <nav class="sm:fixed bg-white w-full"
+        :class="{ 'sm:bg-transparent': !showWhiteBackground }">
         <div>
             <button class="sm:hidden" v-show="!isVisible" @click="toggle">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -21,6 +22,7 @@
 <script>
 import NavbarLink from './NavbarLink.vue'
 import { useToggle } from '@/composables/useToggle'
+import { ref } from "vue"
 
 export default {
     components: {
@@ -28,10 +30,22 @@ export default {
     },
     setup() {
         let { isVisible, toggle } = useToggle();
+        let showWhiteBackground = ref(false);
+
+        document.addEventListener('scroll', function () {
+            let bodyTopPosition = document.body.getBoundingClientRect().top;
+
+            if(bodyTopPosition < -100) {
+                showWhiteBackground.value = true
+            } else {
+                showWhiteBackground.value = false
+            }
+        })
 
         return {
             isVisible,
             toggle,
+            showWhiteBackground,
         }
     },
 }
