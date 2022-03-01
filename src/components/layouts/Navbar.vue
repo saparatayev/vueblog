@@ -1,11 +1,11 @@
 <template>
     <nav id="navbar"
-        class="px-4 py-4 sm:py-6 bg-white shadow sm:bg-gray-900 sm:shadow-none sm:fixed w-full z-10"
-        :class="{ 'sm:bg-transparent': !showWhiteBackground }">
+        class="px-4 py-4 sm:py-6 bg-white shadow sm:fixed w-full z-10 transition-colors duration-500"
+        :class="{ 'sm:bg-transparent sm:shadow-none': !showWhiteBackground }">
         <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
             <div class="w-full flex flex-row items-center justify-between">
                 <div class="text-3xl font-bold">
-                    <span class="sm:text-white">Lara</span>
+                    <span :class="{'sm:text-white': !showWhiteBackground}">Lara</span>
                     <span class="text-primary">Tips</span>
                 </div>
                 <div>
@@ -17,8 +17,8 @@
                     </button>
                 </div>
             </div>
-            <div class="mt-4 sm:mt-0 w-full sm:space-x-4 sm:text-right sm:block sm:text-white"
-                :class="{'hidden': !isVisible}"    
+            <div class="mt-4 sm:mt-0 w-full sm:space-x-4 sm:text-right sm:block"
+                :class="{'hidden': !isVisible, 'sm:text-white': !showWhiteBackground}"    
             >
                 <NavbarLink to="/articles" label="Articles" />
                 <NavbarLink to="/about" label="About" />
