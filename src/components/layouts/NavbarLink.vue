@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to">{{ label }}</router-link>
+  <router-link class="block sm:inline-block sm:px-4 py-2 hover:text-primary transition-colors duration-300" :to="to">{{ label }}</router-link>
 </template>
 
 <script>
