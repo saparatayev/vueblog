@@ -1,7 +1,8 @@
 <template>
   <div>
     <Hero />
-    <div>
+
+    <div class="py-8 sm:py-20 px-4 sm:px-0 container mx-auto">
       <Articles />
     </div>
   </div>
